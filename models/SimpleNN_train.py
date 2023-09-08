@@ -30,21 +30,6 @@ class SimpleNN_train(nn.Module):
     def train(self, inputs, labels, test_inputs, learning_rate=0.1, epochs=100):
         optimizer = sgd(self.parameters(), learning_rate)
         print("Final bias, before optimization: " + str(self.final_bias.data) + "\n")
-        
-        # TODO: Animate Plot while learning!!!
-        #sns.set(style="whitegrid")
-        #sns.set(style="whitegrid")
-        #output = [0,0,0]
-        #sns.lineplot(x=inputs,
-        #                y=output,
-        #                color='green',
-        #                linewidth=2.5)
-        
-        #plt.ylabel('Effectiveness')
-        #plt.xlabel('Dose')
-
-        #hl, = plt.plot(inputs, output)
-        #plt.plot()
 
         plot = PlotInteractive(inputs, [0] * len(inputs))
 
@@ -55,9 +40,7 @@ class SimpleNN_train(nn.Module):
                 label_i = labels[i]
 
                 output_i = self(input_i)
-                #output[1] = 1
-                # plot
-                #plt.draw()
+
                 # Calculate Square Residual b/w output and known value
                 loss = (output_i - label_i)**2
 

@@ -31,9 +31,11 @@ def doses_test(model, ls: LinSpace):
 
     plt.show()
 
-    #output_value = model(input_doses)
-
 def doses_train(model: SimpleNN_train, ls: LinSpace):
+    '''
+        Use matplotlib to plot training and testing data for each
+        model regression
+    '''
     input_doses = torch.linspace(ls.start, ls.end, ls.step)
 
     # Train
@@ -43,18 +45,8 @@ def doses_train(model: SimpleNN_train, ls: LinSpace):
     model.train(input, labels, input_doses)
     output_value = model(input_doses)
 
-    #sns.set(style="whitegrid")
-    #sns.lineplot(x=input_doses,
-    #                 y=output_value.detach(),
-    #                 color='green',
-    #                 linewidth=2.5)
-    
-    #plt.ylabel('Effectiveness')
-    #plt.xlabel('Dose')
+    print(output_value)
 
-    #plt.show()
-
-    #output_value = model(input_doses)
 
 def shit_try():
     grid_kws = {'width_ratios': (0.9, 0.05), 'wspace': 0.2}
@@ -67,13 +59,5 @@ if __name__ == "__main__":
     doses = LinSpace(0,1,21)
     #doses_test(SimpleNN(), doses)
     doses_train(SimpleNN_train(), doses)
+
     
-    
-    #python_sucks()
-    print("BLAH")
-    
-    # create_dataset()
-    #example_train()
-    #example_train_capture()
-    # example_render_model()
-    # example_render()
